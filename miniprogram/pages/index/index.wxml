@@ -1,0 +1,4 @@
+<navigator id="nav" url="plugin://hello-plugin/hello-page">
+  Go to Plugin page
+</navigator>
+<calendar option="{{option}}" bind:setDate="setDate" bind:setDay="setDay"/>

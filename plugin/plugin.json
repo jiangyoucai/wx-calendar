@@ -1,0 +1,9 @@
+{
+  "publicComponents": {
+    "calendar": "components/calendar/calendar"
+  },
+  "pages": {
+    "hello-page": "pages/hello-page"
+  },
+  "main": "index.js"
+}
