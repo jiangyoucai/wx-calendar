@@ -7,7 +7,7 @@ Page({
       mulit: false,
       mark: '今',
       disable: 'left',
-      // show: 'fee',
+      show: undefined,
       empty: false,
       total: {
         '2020-9-27': 99,
