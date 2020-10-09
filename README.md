@@ -118,13 +118,17 @@ a calendar for wechat mini programs
 
 # 方法
 
-1.切换年月
+1.选中日期
 
-    setDay
+    setDate: function (e) {
+        console.log(1, e)
+    }
     
-2.选中日期
+2.切换年月
 
-    setDate
+    setDay: function (e) {
+        console.log(2, e)
+    }
    
 # 截图
 
