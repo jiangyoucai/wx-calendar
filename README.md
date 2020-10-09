@@ -14,7 +14,7 @@ a calendar for wechat mini programs
     
     {
     "usingComponents": {
-    "calendar": "your path/wx-calendar"
+    "calendar": "your path/calendar"
     }
 
 3.使用组件
