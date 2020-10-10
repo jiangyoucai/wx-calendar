@@ -36,7 +36,7 @@ Component({
       year: "<<",
       month: "<",
     },
-     // map, 默认year, month
+    // map, 默认year, month
     right: {
       year: ">>",
       month: ">"
@@ -113,6 +113,23 @@ Component({
       }
       this.setDay();
     },
+    setDay() {
+      // 计算，月初对应的星期
+      const min = new Date(this.data.year, this.data.month - 1).getDay()
+      // 计算，月未对应的数字
+      const max = new Date(this.data.year, this.data.month, 0).getDate()
+      this.setData({
+        min: min,
+        max: max,
+        date: ''
+      })
+      this.triggerEvent('setDay', {
+        year: this.data.year,
+        month: this.data.month,
+        min: 1,
+        max: max,
+      })
+    },
     setDate(e) {
       const index = e.target.dataset.index
       switch (this.data.option.mulit) {
@@ -123,7 +140,6 @@ Component({
               date: this.data.year + '-' + this.data.month + '-' + index,
             }
           })
-          console.log(this.data.select)
           break;
         case true:
           // 多选
@@ -195,30 +211,12 @@ Component({
           this.setData({
             select: {
               start: this.data.start.year + '-' + this.data.start.month + '-' + this.data.start.date,
-              end: this.data.end.year + '-' + this.data.end.month + '-' + this.data.end.date
+              end: this.data.end.year + '-' + this.data.end.month + '-' + this.data.end.date,
             }
           })
-          console.log(this.data.select)
           break;
       }
       this.triggerEvent('setDate', this.data.select)
-    },
-    setDay() {
-      // 计算，月初对应的星期
-      const min = new Date(this.data.year, this.data.month - 1).getDay()
-      // 计算，月未对应的数字
-      const max = new Date(this.data.year, this.data.month, 0).getDate()
-      this.setData({
-        min: min,
-        max: max,
-        date: ''
-      })
-      this.triggerEvent('setDay', {
-        year: this.data.year,
-        month: this.data.month,
-        min: 1,
-        max: max,
-      })
     },
   }
 })

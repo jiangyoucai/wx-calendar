@@ -1,6 +1,6 @@
 # wx-calendar
 
-a calendar for wechat mini programs
+微信小程序日历组件(a calendar for wechat mini programs)
 
 # 使用
 
@@ -112,22 +112,22 @@ a calendar for wechat mini programs
 
 8.为空选中
 
+    仅当show: customize时，有效
     empty: true // 可以选中
     empty: false // 不可选中
-    仅当show: customize时，有效
 
 # 方法
 
 1.选中日期
 
     setDate: function (e) {
-        console.log(1, e)
+        console.log(e)
     }
     
 2.切换年月
 
     setDay: function (e) {
-        console.log(2, e)
+        console.log(e)
     }
    
 # 截图

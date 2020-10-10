@@ -7,20 +7,20 @@
     <view class="x10"></view>
   </block>
   <block wx:else>
-    <view class="x10 cl6" bindtap="setYear" data-index="-1">{{left.year}}</view>
+    <view class="x10 fs16 cl6" bindtap="setYear" data-index="-1">{{left.year}}</view>
   </block>
   <!-- month - -->
-  <view class="x10 cl6" bindtap="setMonth" data-index="-1">{{left.month}}</view>
+  <view class="x10 fs16 cl6" bindtap="setMonth" data-index="-1">{{left.month}}</view>
   <!-- current -->
   <text class="x50">{{year}} 年 {{month}} 月</text>
   <!-- month + -->
-  <view class="x10 cl6" bindtap="setMonth" data-index="1">{{right.month}}</view>
+  <view class="x10 fs16 cl6" bindtap="setMonth" data-index="1">{{right.month}}</view>
   <!-- year + -->
   <block wx:if="{{option.show!==undefined}}">
     <view class="x10"></view>
   </block>
   <block wx:else>
-    <view class="x10 cl6" bindtap="setYear" data-index="1">{{right.year}}</view>
+    <view class="x10 fs16 cl6" bindtap="setYear" data-index="1">{{right.year}}</view>
   </block>
   <view class="x10"></view>
 </view>
@@ -77,8 +77,7 @@
             <block wx:if="{{option.total[year+'-'+month+'-'+(item+1)]>99}}">
               <text
                 class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
-                bindtap="setDate" data-index="{{item+1}}"
-                data-total="{{option.total[year+'-'+month+'-'+(item+1)]}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
+                bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">充足</text>
             </block>
             <!-- total <= 0 -->
@@ -91,8 +90,7 @@
             <block wx:else>
               <text
                 class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
-                bindtap="setDate" data-index="{{item+1}}"
-                data-total="{{option.total[year+'-'+month+'-'+(item+1)]}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
+                bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">{{option.total[year+'-'+month+'-'+(item+1)]}}件</text>
             </block>
           </block>
@@ -110,8 +108,7 @@
             <block wx:if="{{option.fee[year+'-'+month+'-'+(item+1)]>9999}}">
               <text
                 class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
-                bindtap="setDate" data-index="{{item+1}}"
-                data-fee="{{option.fee[year+'-'+month+'-'+(item+1)]}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
+                bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">￥9999+</text>
             </block>
             <!-- fee <= 0 -->
@@ -124,8 +121,7 @@
             <block wx:else>
               <text
                 class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
-                bindtap="setDate" data-index="{{item+1}}"
-                data-fee="{{option.fee[year+'-'+month+'-'+(item+1)]}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
+                bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">￥{{option.fee[year+'-'+month+'-'+(item+1)]}}</text>
             </block>
           </block>
@@ -144,8 +140,7 @@
             <block wx:else>
               <text
                 class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
-                bindtap="setDate" data-index="{{item+1}}"
-                data-customize="{{option.customize[year+'-'+month+'-'+(item+1)]}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
+                bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">{{option.customize[year+'-'+month+'-'+(item+1)]}}</text>
             </block>
           </block>
@@ -153,8 +148,7 @@
           <block wx:else>
             <text
               class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
-              bindtap="setDate" data-index="{{item+1}}"
-              data-customize="{{option.customize[year+'-'+month+'-'+(item+1)]}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
+              bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
             <text class="y30 fs12 clx">{{option.customize[year+'-'+month+'-'+(item+1)]}}</text>
           </block>
         </block>
