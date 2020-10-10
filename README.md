@@ -1,6 +1,6 @@
 # wx-calendar
 
-a calendar for wechat mini programs
+微信小程序日历组件(a calendar for wechat mini programs)
 
 # 使用
 
