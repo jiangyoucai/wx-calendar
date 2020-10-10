@@ -112,9 +112,9 @@
 
 8.为空选中
 
+    仅当show: customize时，有效
     empty: true // 可以选中
     empty: false // 不可选中
-    仅当show: customize时，有效
 
 # 方法
 
