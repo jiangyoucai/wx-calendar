@@ -51,7 +51,7 @@ Component({
     week: ['日', '一', '二', '三', '四', '五', '六'],
     // int, 默认月初是周几
     min: new Date(new Date().getFullYear(), new Date().getMonth(), 1).getDay(),
-    // init, 默认月末是几号
+    // int, 默认月末是几号
     max: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate(),
     // map, 默认当前年, 月, 日
     current: {

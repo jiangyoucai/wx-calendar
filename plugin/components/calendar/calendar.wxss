@@ -1,5 +1,4 @@
 /* plugin/components/calendar.wxss */
-/**app.wxss**/
 
 .container {
   display: flex;
