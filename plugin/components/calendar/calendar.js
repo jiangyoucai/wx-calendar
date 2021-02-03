@@ -61,7 +61,7 @@ Component({
     },
     // map, 默认选中日期，开始日期，结束日期
     select: {
-      date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate(),
+      date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart('2', '0') + '-' + new Date().getDate().toString().padStart('2', '0'),
       start: '',
       end: '',
     },
@@ -137,7 +137,7 @@ Component({
           // 单选
           this.setData({
             select: {
-              date: this.data.year + '-' + this.data.month + '-' + index,
+              date: this.data.year + '-' + this.data.month.toString().padStart('2', '0') + '-' + index.toString().padStart('2', '0'),
             }
           })
           break;
@@ -210,13 +210,13 @@ Component({
           }
           this.setData({
             select: {
-              start: this.data.start.year + '-' + this.data.start.month + '-' + this.data.start.date,
-              end: this.data.end.year + '-' + this.data.end.month + '-' + this.data.end.date,
+              start: this.data.start.year + '-' + this.data.start.month.toString().padStart('2', '0') + '-' + this.data.start.date.toString().padStart('2', '0'),
+              end: this.data.end.year + '-' + this.data.end.month.toString().padStart('2', '0') + '-' + this.data.end.date.toString().padStart('2', '0'),
             }
           })
           break;
       }
       this.triggerEvent('setDate', this.data.select)
-    },
+    }
   }
 })

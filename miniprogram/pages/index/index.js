@@ -7,7 +7,7 @@ Page({
       mulit: false,
       mark: '今',
       disable: 'left',
-      show: undefined,
+      show: 'total',
       empty: false,
       total: {
         '2021-01-27': 99,

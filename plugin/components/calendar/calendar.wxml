@@ -77,7 +77,7 @@
             <!-- total > 99 -->
             <block wx:if="{{option.total[year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)]>99}}">
               <text
-                class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
+                class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
                 bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">充足</text>
             </block>
@@ -90,7 +90,7 @@
             <!-- total other number -->
             <block wx:else>
               <text
-                class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
+                class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
                 bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">{{option.total[year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)]}}件</text>
             </block>
@@ -108,7 +108,7 @@
             <!-- fee > 9999 -->
             <block wx:if="{{option.fee[year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)]>9999}}">
               <text
-                class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
+                class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
                 bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">￥9999+</text>
             </block>
@@ -121,7 +121,7 @@
             <!-- fee other number -->
             <block wx:else>
               <text
-                class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
+                class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
                 bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">￥{{option.fee[year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)]}}</text>
             </block>
@@ -140,7 +140,7 @@
             <!-- disallow empty -->
             <block wx:else>
               <text
-                class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
+                class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
                 bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
               <text class="y30 fs12 clx">{{option.customize[year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)]}}</text>
             </block>
@@ -148,7 +148,7 @@
           <!-- customize set value-->
           <block wx:else>
             <text
-              class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
+              class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
               bindtap="setDate" data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
             <text class="y30 fs12 clx">{{option.customize[year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)]}}</text>
           </block>
@@ -157,7 +157,7 @@
       <!-- show not set -->
       <block wx:else>
         <text
-          class="y30 {{(year+'-'+month+'-'+(item+1)!==select.date)&&(year+'-'+calendar.month+'-'+(item+1)!==select.start)&&(year+'-'+month+'-'+(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
+          class="y30 {{(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.date)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.start)&&(year+'-'+calendar.addZero(month)+'-'+calendar.addZero(item+1)!==select.end)?'':'bgx clf'}} x-center b-radiux"
           bindtap="setDate"
           data-index="{{item+1}}">{{year+'-'+month+'-'+(item+1)!==current.year + '-' + current.month + '-'+ current.date?item+1:option.mark}}</text>
       </block>
