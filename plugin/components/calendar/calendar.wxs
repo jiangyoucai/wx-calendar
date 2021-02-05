@@ -1,8 +1,103 @@
-// addZero
-function addZero(i) {
+// setZero
+function setZero(i) {
   return i < 10 ? '0' + i : i
 }
 
+function setLess(year, month, index, current) {
+  var n = getDate(year, month, index).getTime();
+  var c = getDate(
+    current.year,
+    current.month,
+    current.date
+  ).getTime();
+  if (n < c) {
+    return true;
+  }
+}
+
+function setMore(year, month, index, current) {
+  var n = getDate(year, month, index).getTime();
+  var c = getDate(
+    current.year,
+    current.month,
+    current.date
+  ).getTime();
+  if (n > c) {
+    return true;
+  }
+  return false;
+}
+
+function setStyle(year, month, index, select) {
+  var n = getDate(year, month, index).getTime();
+  var d = getDate(
+    select.date.year,
+    select.date.month,
+    select.date.date
+  ).getTime();
+  var s = getDate(
+    select.start.year,
+    select.start.month,
+    select.start.date
+  ).getTime();
+  var e = getDate(
+    select.end.year,
+    select.end.month,
+    select.end.date
+  ).getTime();
+  if (n === d || n === s || n === e) {
+    return true;
+  }
+  return false;
+}
+
+function setText(year, month, index, current, option) {
+  var n = getDate(year, month, index).getTime();
+  var c = getDate(
+    current.year,
+    current.month,
+    current.date
+  ).getTime();
+  return n !== c ? index : option.mark;
+}
+
+function setFee(year, month, index, option) {
+  var n =
+    year +
+    "-" +
+    setZero(month) +
+    "-" +
+    setZero(index);
+  return option.fee[n];
+}
+
+function setTotal(year, month, index, option) {
+  var n =
+    year +
+    "-" +
+    setZero(month) +
+    "-" +
+    setZero(index);
+  return option.total[n];
+}
+
+function setCustomize(year, month, index, option) {
+  var n =
+    year +
+    "-" +
+    setZero(month) +
+    "-" +
+    setZero(index);
+  return option.customize[n];
+}
+
 module.exports = {
-  'addZero': addZero,
+  'setZero': setZero,
+  'setLess': setLess,
+  'setMore': setMore,
+  'setStyle': setStyle,
+  'setText': setText,
+  'setFee': setFee,
+  'setTotal': setTotal,
+  'setCustomize': setCustomize,
 }

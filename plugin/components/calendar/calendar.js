@@ -15,8 +15,6 @@ Component({
         disable: undefined,
         // str, 默认undefined, 可选total, fee, customize
         show: undefined,
-        // bool, 默认undefined，可选true, false
-        empty: false,
         // object, 默认undefined
         total: undefined,
         // object, 默认undefined
@@ -45,8 +43,6 @@ Component({
     year: new Date().getFullYear(),
     // int, 默认当前月
     month: new Date().getMonth() + 1,
-    // int, 默认当前日
-    date: new Date().getDate(),
     // list, 默认周日开始，周六结束
     week: ['日', '一', '二', '三', '四', '五', '六'],
     // int, 默认月初是周几
@@ -61,22 +57,22 @@ Component({
     },
     // map, 默认选中日期，开始日期，结束日期
     select: {
-      date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart('2', '0') + '-' + new Date().getDate().toString().padStart('2', '0'),
-      start: '',
-      end: '',
+      date: {
+        year: 0,
+        month: 0,
+        date: 0
+      },
+      start: {
+        year: 0,
+        month: 0,
+        date: 0
+      },
+      end: {
+        year: 0,
+        month: 0,
+        date: 0
+      }
     },
-    // map, 默认开始日期年, 月, 日
-    start: {
-      year: 0,
-      month: 0,
-      date: 0
-    },
-    // map, 默认开始日期年, 月, 日
-    end: {
-      year: 0,
-      month: 0,
-      date: 0
-    }
   },
 
   /**
@@ -100,14 +96,14 @@ Component({
       // less than
       if (month < 1) {
         this.setData({
-          year: this.data.year - 1,
+          year: this.data.year--,
           month: 12,
         })
       }
       // more than
       if (month > 12) {
         this.setData({
-          year: this.data.year + 1,
+          year: this.data.year++,
           month: 1,
         })
       }
@@ -121,7 +117,6 @@ Component({
       this.setData({
         min: min,
         max: max,
-        date: ''
       })
       this.triggerEvent('setDay', {
         year: this.data.year,
@@ -132,91 +127,84 @@ Component({
     },
     setDate(e) {
       const index = e.target.dataset.index
-      switch (this.data.option.mulit) {
-        case false:
-          // 单选
-          this.setData({
-            select: {
-              date: this.data.year + '-' + this.data.month.toString().padStart('2', '0') + '-' + index.toString().padStart('2', '0'),
-            }
-          })
-          break;
-        case true:
-          // 多选
-          if (this.data.start.date !== 0) {
-            // start.date !== 0
-            if (this.data.end.date !== 0) {
-              // end.date !== 0
-              const select = new Date(this.data.year, this.data.month - 1, index).getTime()
-              const end = new Date(this.data.end.year, this.data.end.month - 1, this.data.end.date).getTime()
-              if (select >= end) {
-                // 选择日期 >= 结束日期
-                // 设置，结束日期后移
-                this.setData({
-                  end: {
-                    year: this.data.year,
-                    month: this.data.month,
-                    date: index,
-                  },
-                })
-              } else {
-                // 选择日期 < 结束日期
-                // 设置，开始日期前移
-                this.setData({
-                  start: {
-                    year: this.data.year,
-                    month: this.data.month,
-                    date: index,
-                  }
-                })
-              }
-            } else {
-              // end.date === 0
-              const select = new Date(this.data.year, this.data.month - 1, index).getTime()
-              const start = new Date(this.data.start.year, this.data.start.month - 1, this.data.start.date).getTime()
-              if (select >= start) {
-                // 选择日期 >= 开始日期
-                // 设置，结束日期
-                this.setData({
-                  end: {
-                    year: this.data.year,
-                    month: this.data.month,
-                    date: index,
-                  },
-                })
-              } else {
-                // 选择日期 < 开始日期
-                // 设置，结束日期
-                // 替换，开始日期
-                this.setData({
-                  end: this.data.start,
-                  start: {
-                    year: this.data.year,
-                    month: this.data.month,
-                    date: index,
-                  },
-                })
-              }
+      if (this.data.option.mulit) {
+        // 多选
+        // 1. 首次选中
+        // 设置start
+        // 2. 第N次选中
+        // 当选中日期<start，则start向左移动
+        // 当选中日期>start，则end向右移动
+
+        // 开始日期
+        const start = new Date(this.data.start.year, this.data.start.month - 1, this.data.start.date).getTime()
+
+        if (start < 0) {
+          // 首次选中
+          this.data.select.start = {
+            year: this.data.year,
+            month: this.data.month,
+            date: index,
+            format: this.data.year +
+              "-" +
+              this.setZero(this.data.month) +
+              "-" +
+              this.setZero(index),
+          }
+        } else {
+          // 第N次选中
+          // 选中日期
+          const now = new Date(
+            this.data.year,
+            this.data.month,
+            index
+          ).getTime();
+          // 判断大小
+          if (now > start) {
+            // end，向右移动
+            this.data.select.end = {
+              year: this.data.year,
+              month: this.data.month,
+              date: index,
+              format: this.data.year +
+                "-" +
+                this.setZero(this.data.month) +
+                "-" +
+                this.setZero(index),
             }
           } else {
-            // start date === 0
-            this.setData({
-              start: {
-                year: this.data.year,
-                month: this.data.month,
-                date: index,
-              },
-            })
-          }
-          this.setData({
-            select: {
-              start: this.data.start.year + '-' + this.data.start.month.toString().padStart('2', '0') + '-' + this.data.start.date.toString().padStart('2', '0'),
-              end: this.data.end.year + '-' + this.data.end.month.toString().padStart('2', '0') + '-' + this.data.end.date.toString().padStart('2', '0'),
+            // start，向左移动
+            this.data.select.start = {
+              year: this.data.year,
+              month: this.data.month,
+              date: index,
+              format: this.data.year +
+                "-" +
+                this.setZero(this.data.month) +
+                "-" +
+                this.setZero(index),
             }
-          })
-          break;
+          }
+        }
+      } else {
+        // 单选
+        this.data.select.date = {
+          year: this.data.year,
+          month: this.data.month,
+          date: index,
+          format: this.data.year +
+            "-" +
+            this.setZero(this.data.month) +
+            "-" +
+            this.setZero(index),
+        }
       }
+      this.setData({
+        select: this.data.select
+      })
       this.triggerEvent('setDate', this.data.select)
-    }
+    },
+    setZero(index) {
+      return index.toString().padStart("2", "0");
+    },
   }
 })
